@@ -19,8 +19,7 @@ const App:React.FC=()=>{
     <>
        <BrowserRouter>
     <Routes>
-     <Route path="/" element = {<UserDetails/>}/>
-     <Route path='/userList' element={<HomePage/>} />
+     <Route path="/" element = {<HomePage/>}/>
      <Route path="/login" element={<Login/>}/>
      <Route path='/signup' element={<Register/>}/>
      <Route path="/setAvailability/:userId"

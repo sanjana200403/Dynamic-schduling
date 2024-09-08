@@ -1,23 +1,40 @@
 import React, { useState } from "react";
 import "./Navbar.css";  // Import styles for Navbar
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const [activePage, setActivePage] = useState<string>("home");
-
-  const handleClick = (page:string) => {
-    setActivePage(page);
-    // Optional: Implement scroll to section or navigation here
-  };
+const navigate = useNavigate()
+  const handleClick = () => {
+    const userJson = localStorage.getItem('user');
+     navigate('/')
+   
+  }
 
   return (
     <nav className="navbar">
-      <div className="navbar-brand">My App</div>
+      <div className="navbar-brand"
+      style={{
+        cursor:"pointer"
+      }}
+      onClick={()=>{
+       handleClick()
+      }}
+      >
+    
+        My App
+        
+        </div>
       <ul className="navbar-links">
-     
-     
-       
-        <li>
+   
+        <li 
+        style={{
+          cursor:"pointer"
+        }}
+        onClick={()=>{
+          localStorage.removeItem('user');
+          navigate('/login')
+        }}>
          
             Logout
           

@@ -20,32 +20,13 @@ const Login:React.FC = () => {
 
         if(response.data.user)
         localStorage.setItem('user', JSON.stringify(response.data.user));
+      navigate('/')
 
       }
       else{
         toast.error("Something Wrong")
       }
-      if(response.data.user.role=== "admin"){
-          navigate('/usersuserList')
-        const userJson = localStorage.getItem('user');
-    if (userJson) {
-      try {
-        const user = JSON.parse(userJson);
-        
-        // Check if user data and id are present
-        if (user && user.id) {
-          // Navigate to the desired route
-          navigate(`/`);
-        } else {
-          console.log('User data is invalid or missing id.');
-        }
-      } catch (error) {
-        console.error('Failed to parse user data:', error);
-      }
-    } else {
-      console.log('No user data found in localStorage.');
-    }
-      }
+    
       
       
     } catch (error:any) {

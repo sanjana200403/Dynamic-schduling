@@ -36,12 +36,6 @@ const UserDetails:React.FC = () => {
     
   return (
     <div>
-
-    <Navbar/>
-  
-    
-   
-   
     <main className="main-content"
     style={{
         display:"flex",
