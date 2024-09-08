@@ -107,7 +107,8 @@ exports.deleteSession = async (req, res) => {
 // Example Express.js route handler
 exports.getAvailableUsers = async (req, res) => {
   try{
-    const users = await UserSchema.find({})
+    const users = await UserSchema.find({role:'user'})
+    console.log(users,"userss")
     return res.json({users})
   }catch(error){
     console.log(error)

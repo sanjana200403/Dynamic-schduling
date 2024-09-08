@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import moment from 'moment';
 import baseUrl from '../apis/BaseRoute'; // Adjust based on your API route
 import { SlotInfo } from 'react-big-calendar';
+import { toast } from 'react-toastify';
 
 
 interface CreateSessionFormProps {
@@ -49,7 +50,7 @@ const CreateSessionForm: React.FC<CreateSessionFormProps> = ({ slotInfo, userId,
           setUsers(data.users);
         } catch (error) {
           console.error('Error fetching users:', error);
-          alert('Error fetching users. Please try again.');
+          toast.error('Error fetching users. Please try again.');
         }
       };
     fetchUsers();
@@ -98,11 +99,11 @@ const CreateSessionForm: React.FC<CreateSessionFormProps> = ({ slotInfo, userId,
       }
 
       const result = await response.json();
-      alert('Session created successfully!');
+      toast.success('Session created successfully!');
       setShowSessionForm(false);
     } catch (error) {
       console.error('Error creating session:', error);
-      alert('Failed to create session. Please try again.');
+    toast.error('Failed to create session. Please try again.');
     }
   };
 

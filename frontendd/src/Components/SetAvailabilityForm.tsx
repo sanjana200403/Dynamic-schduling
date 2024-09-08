@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { SlotInfo } from 'react-big-calendar';
 import moment from 'moment';
 import baseUrl from '../apis/BaseRoute';
+import { toast } from 'react-toastify';
 
 interface SetAvailabilityFormProps {
   slotInfo: SlotInfo | null;
@@ -44,17 +45,17 @@ const SetAvailabilityForm: React.FC<SetAvailabilityFormProps> = ({ slotInfo, use
 
       if (!response.ok) {
         const errorData = await response.json();
-        alert(`Error: ${errorData.message}`);
+        toast.error(`Error: ${errorData.message}`);
         return;
       }
 
       const result = await response.json();
       console.log('Availability created:', result);
-      alert('Availability created successfully!');
+      toast.success('Availability created successfully!');
       setAvailability(false);
     } catch (error) {
       console.error('Error creating availability:', error);
-      alert('Failed to create availability. Please try again.');
+      toast.error('Failed to create availability. Please try again.');
     }
   };
 
